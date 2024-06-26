@@ -3,16 +3,30 @@ const readline = require('readline-sync');
 // saying hello!
 console.log('Welcome to the calculator! :D');
 
-// getting input
+// getting input for operator and values
+console.log('This calculator can perform operations using the four operators: +, -, *, /.\nPlease enter the operator you would like to use:');
+const operator = readline.prompt();
+
 console.log('\nPlease enter the first number:');
-const a = readline.prompt();
-const A = +a
+const input1 = readline.prompt();
+const number1 = +input1
 
 console.log('\nPlease enter the second number:');
-const b = readline.prompt();
-const B = +b
+const input2 = readline.prompt();
+const number2 = +input2
 
-const c = A*B;
+let ans = 0;
+if (operator == '+'){
+    ans = number1 + number2;
+} else if (operator == '-'){
+    ans = number1 - number2;
+} else if (operator == '*'){
+    ans = number1 * number2;
+} else if (operator == '/'){
+    ans = number1 / number2
+} else{
+    console.log('Your operator input was not one of the four options.')
+}
 
-console.log('\nThe product of those two numbers is ' + c);
+console.log('\nThe answer is ' + ans);
 
