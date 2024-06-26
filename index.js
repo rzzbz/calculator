@@ -16,16 +16,22 @@ const input2 = readline.prompt();
 const number2 = +input2
 
 let ans = 0;
-if (operator == '+'){
-    ans = number1 + number2;
-} else if (operator == '-'){
-    ans = number1 - number2;
-} else if (operator == '*'){
-    ans = number1 * number2;
-} else if (operator == '/'){
-    ans = number1 / number2
-} else{
-    console.log('Your operator input was not one of the four options.')
+
+switch (operator){
+    case "+":
+        ans = number1 + number2;
+        break;
+    case "-":
+        ans = number1 - number2;
+        break;
+    case "*":
+        ans = number1 * number2;
+        break;
+    case "/":
+        ans = number1 / number2;
+        break;
+    default:
+        console.log('Your operator input was not one of the four options.')
 }
 
 console.log('\nThe answer is ' + ans);
