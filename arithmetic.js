@@ -8,13 +8,17 @@ function getOperatorChoice() {
     console.log('This calculator can perform operations using the four operators: +, -, *, /.');
     do {
         operator = userInput.getInput('Please enter the operator you would like to use:');
-    } while ((!validOperators.includes(operator)) && (console.log(`${operator} is not a valid operator choice.nde`) || true))
+    } while ((!validOperators.includes(operator)) && (console.log(`${operator} is not a valid operator choice.`) || true))
     return operator;
 }
 
 function getIterationValue() {
-    console.log(`How many numbers do you wish to ${operator}?`);
-    return userInput.getNumberInput() ;
+    let iterations;
+    console.log(`How many numbers do you wish to ${operator}?`)
+    do {
+        iterations = userInput.getNumberInput();
+    } while (((!(Number.isInteger(iterations))) || (!(iterations > 1))) && (console.log(`You need to input an integer >= 2.`) || true ))
+    return iterations;
 }
 
 function getNumbers(iterations) {
