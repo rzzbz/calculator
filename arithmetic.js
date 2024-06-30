@@ -36,6 +36,8 @@ function computeCalculation(operator, numbers) {
         return numbers.reduce((acc, curr) => acc * curr, firstNumber);
     } else if (operator == '/') {
         return numbers.reduce((acc, curr) => acc / curr, firstNumber);
+    } else {
+        throw new Error(`The input ${operator} is not a valid operator choice.`)
     }
 }
 
