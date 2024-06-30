@@ -9,7 +9,7 @@ function getNumberInput() {
     let response;
     do {
         response = getInput('Please enter a number:');
-    } while (isNaN(response));
+    } while (isNaN(response) && (console.log(`${response} is not a number.`) || true));
     return +response;
 }
 

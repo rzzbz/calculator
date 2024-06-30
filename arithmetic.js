@@ -3,8 +3,13 @@ const userInput = require('./userInput');
 exports.performOneArithmeticCalculation = performOneArithmeticCalculation;
 
 function getOperatorChoice() {
+    validOperators = ['+', '-', '*', '/'];
+    let operator;
     console.log('This calculator can perform operations using the four operators: +, -, *, /.');
-    return userInput.getInput('Please enter the operator you would like to use: ');
+    do {
+        operator = userInput.getInput('Please enter the operator you would like to use:');
+    } while ((!validOperators.includes(operator)) && (console.log(`${operator} is not a valid operator choice.nde`) || true))
+    return operator;
 }
 
 function getIterationValue() {
@@ -36,8 +41,6 @@ function computeCalculation(operator, numbers) {
         return numbers.reduce((acc, curr) => acc * curr, firstNumber);
     } else if (operator == '/') {
         return numbers.reduce((acc, curr) => acc / curr, firstNumber);
-    } else {
-        throw new Error(`The input ${operator} is not a valid operator choice.`)
     }
 }
 

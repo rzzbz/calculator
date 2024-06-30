@@ -20,8 +20,13 @@ function printWelcomeMessage() {
 }
 
 function getCalculationMode() {
-    return userInput.getInput(`Which calculator mode do you want?
+    validModes = ['1', '2'];
+    let mode
+    console.log(`Which calculator mode do you want?
     1) Arithmetic
     2) Vowel counting`)
+    do {
+        mode = userInput.getInput('Please enter the mode number:');
+    } while ((!validModes.includes(mode)) && (console.log(`${mode} is not one of the mode options.`) || true))
+    return mode
 }
-
