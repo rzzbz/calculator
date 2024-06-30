@@ -12,37 +12,38 @@ function getIterationValue() {
     return userInput.getNumberInput() ;
 }
 
-function computeCalculation(operator, iterations) {
-    let ans = 0;
-
+function getNumbers(iterations) {
+    let numbers = new Array(iterations);
     for (let i = 0; i < iterations; i++) {
         console.log(`Please enter number ${i+1}.`)
-        num = userInput.getNumberInput();
+        numbers[i] = userInput.getNumberInput();
+    }
+    return numbers;
+}
 
-        if (i == 0){
-            ans = num;
-        } else {
-            if (operator == '+'){
-                ans += num;
-            } else if (operator == '-'){
-                ans -= num;
-            } else if (operator == '*'){
-                ans *= num;
-            } else if (operator == '/'){
-                ans /= num;
-            } else {
-                console.log('Operator input invalid.');
-            }
-        }
+function computeCalculation(operator, numbers) {
+    firstNumber = numbers[0]
+    numbers = numbers.slice(1);
+    if (operator == '/') {
+        numbers = numbers.filter(x => x !== 0);
     }
 
-    return ans;
+    if (operator == '+') {
+        return numbers.reduce((acc, curr) => acc + curr, firstNumber);
+    } else if (operator == '-') {
+        return numbers.reduce((acc, curr) => acc - curr, firstNumber);
+    } else if (operator == '*') {
+        return numbers.reduce((acc, curr) => acc * curr, firstNumber);
+    } else if (operator == '/') {
+        return numbers.reduce((acc, curr) => acc / curr, firstNumber);
+    }
 }
 
 function performOneArithmeticCalculation() {
     operator = getOperatorChoice();
     iterations = getIterationValue();
-    ans = computeCalculation(operator, iterations);
+    numbers = getNumbers(iterations);
+    ans = computeCalculation(operator, numbers);
 
     console.log(`\nThe answer is ${ans}.`);
 }
